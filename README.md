@@ -63,6 +63,8 @@ Un système de gestion scolaire complet développé avec Laravel 11, permettant 
 
 ## 🗄️ Structure de la Base de Données
 
+![Database Schema](school_management-db.jpeg)
+
 ### Tables Principales
 1. `users`
     - Gestion des comptes utilisateurs
