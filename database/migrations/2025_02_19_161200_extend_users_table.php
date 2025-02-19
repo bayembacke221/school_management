@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('type'); // 'student', 'teacher', 'admin', 'parent'
-            $table->string('phone')->nullable();
+            $table->string('first_name')->after('id');
+            $table->string('last_name')->after('first_name');
+            $table->string('phone_number')->nullable()->after('email');
             $table->text('address')->nullable();
+            $table->enum('role', ['admin', 'teacher', 'student', 'parent'])->default('student');
             $table->string('avatar')->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->enum('status', ['active', 'inactive'])->default('active');
         });
     }
 
@@ -26,7 +28,15 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['type', 'phone', 'address', 'avatar', 'is_active']);
+            $table->dropColumn([
+                'first_name',
+                'last_name',
+                'phone_number',
+                'address',
+                'role',
+                'avatar',
+                'status'
+            ]);
         });
     }
 };
