@@ -1,15 +1,19 @@
 <?php
 namespace App\Providers;
 
-use App\Models\{Student, Teacher, Course, Grade, Attendance, Classroom};
-use App\Policies\{StudentPolicy, TeacherPolicy, CoursePolicy, GradePolicy, AttendancePolicy, ClassroomPolicy};
+use App\Models\{ Course, Grade, Attendance, Classroom, User};
+use App\Policies\{
+    CoursePolicy,
+    GradePolicy,
+    AttendancePolicy,
+    ClassroomPolicy,
+    UserPolicy};
 use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
     protected $policies = [
-        Student::class => StudentPolicy::class,
-        Teacher::class => TeacherPolicy::class,
+        User::class => UserPolicy::class,
         Course::class => CoursePolicy::class,
         Grade::class => GradePolicy::class,
         Attendance::class => AttendancePolicy::class,
