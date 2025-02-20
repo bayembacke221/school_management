@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Classroom;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,7 +21,6 @@ class UserSeeder extends Seeder
                 'first_name' => "Teacher",
                 'last_name' => "Number $i",
                 'email' => "teacher$i@schoolmanager.com",
-                'name' => "Teacher Number $i",
                 'password' => Hash::make('password'),
                 'role' => 'teacher',
                 'status' => 'active',
@@ -35,7 +35,6 @@ class UserSeeder extends Seeder
                 'first_name' => "Student",
                 'last_name' => "Number $i",
                 'email' => "student$i@schoolmanager.com",
-                'name' => "Student Number $i",
                 'password' => Hash::make('password'),
                 'role' => 'student',
                 'status' => 'active',
@@ -50,7 +49,6 @@ class UserSeeder extends Seeder
                 'first_name' => "Parent",
                 'last_name' => "Number $i",
                 'email' => "parent$i@schoolmanager.com",
-                'name' => "Parent Number $i",
                 'password' => Hash::make('password'),
                 'role' => 'parent',
                 'status' => 'active',
@@ -65,7 +63,6 @@ class UserSeeder extends Seeder
                 'first_name' => "Inactive",
                 'last_name' => ucfirst($role),
                 'email' => "inactive.$role@schoolmanager.com",
-                'name' => "Inactive $role",
                 'password' => Hash::make('password'),
                 'role' => $role,
                 'status' => 'inactive',
@@ -73,5 +70,19 @@ class UserSeeder extends Seeder
                 'address' => "Inactive $role Address"
             ]);
         }
+
+        // Créer 5 Classroom
+        for ($i = 1; $i <= 5; $i++) {
+            Classroom::create([
+                'name' => "Classroom",
+                'section' => "Number $i",
+                'level' => "1",
+                'capacity' => "30",
+                'academic_year' => "2021-2022",
+                'status' => 'active',
+            ]);
+        }
+
+
     }
 }
