@@ -5,30 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'School Management') }}</title>
+    <title>{{ config('app.name', 'SchoolManager') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    @vite(['resources/css/app.css'])
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
 </head>
-<body class="font-sans antialiased bg-gray-100">
-<div x-data="{ sidebarOpen: true }" class="relative min-h-screen md:flex">
-    <!-- Barre latérale -->
-    @include('layouts.sidebar')
+<body class="font-sans antialiased">
+<div class="min-h-screen bg-gray-100">
+    @include('components.header')
 
-    <!-- Contenu principal -->
-    <div class="flex-1 h-screen overflow-y-auto">
-        <!-- Contenu principal -->
-        <main class="p-6">
-            @yield('content')
+    <div class="flex">
+        @auth
+            @include('components.sidebar')
+        @endauth
+
+        <main class="flex-1 @auth ml-64 @endauth">
+            {{ $slot }}
         </main>
     </div>
+
+    @include('components.footer')
 </div>
 
-@vite(['resources/js/app.js'])
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+@stack('scripts')
 </body>
 </html>
