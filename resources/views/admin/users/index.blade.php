@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -111,6 +110,9 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <a href="{{ route('admin.users.edit', $user) }}" class="text-indigo-600 hover:text-indigo-900">
                                         Modifier
+                                    </a>
+                                    <a href="{{ route('admin.users.show', $user) }}" class="text-indigo-600 hover:text-indigo-900">
+                                        Voir
                                     </a>
                                     <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="inline ml-2">
                                         @csrf
