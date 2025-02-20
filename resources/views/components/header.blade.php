@@ -19,27 +19,37 @@
                 <a href="#" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
                     Contact
                 </a>
-                @if(auth()->user()->role === 'admin')
-                    <a href="{{ route('admin.dashboard') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">
-                        Dashboard
-                    </a>
-                @elseif(auth()->user()->role === 'teacher')
-                    <a href="{{ route('teacher.dashboard') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">
-                        Dashboard
-                    </a>
-                @elseif(auth()->user()->role === 'student')
-                    <a href="{{ route('student.dashboard') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">
-                        Dashboard
-                    </a>
-                @elseif(auth()->user()->role === 'parent')
-                    <a href="{{ route('parent.dashboard') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">
-                        Dashboard
-                    </a>
+                @auth
+                    @switch(auth()->user()->role)
+                        @case('admin')
+                            <a href="{{ route('admin.dashboard') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">
+                                Dashboard Admin
+                            </a>
+                            @break
+
+                        @case('teacher')
+                            <a href="{{ route('teacher.dashboard') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">
+                                Dashboard Enseignant
+                            </a>
+                            @break
+
+                        @case('student')
+                            <a href="{{ route('student.dashboard') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">
+                                Dashboard Étudiant
+                            </a>
+                            @break
+
+                        @case('parent')
+                            <a href="{{ route('parent.dashboard') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">
+                                Dashboard Parent
+                            </a>
+                            @break
+                    @endswitch
                 @else
                     <a href="{{ route('login') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">
                         Connexion
                     </a>
-                @endif
+                @endauth
             </nav>
 
             <!-- Mobile menu button -->

@@ -2,17 +2,11 @@
 
 namespace App\Models;
 
-
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-/**
- * Cette classe représente un utilisateur.
- * Elle peut être un administrateur, un enseignant, un étudiant ou un parent.
- * Elle permet de gérer les informations des utilisateurs.
- **/
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -45,15 +39,10 @@ class User extends Authenticatable
         return "{$this->first_name} {$this->last_name}";
     }
 
-    // Relations selon le rôle
-    public function teacher()
+    // Relations polymorphiques
+    public function profile()
     {
-        return $this->hasOne(Teacher::class);
-    }
-
-    public function student()
-    {
-        return $this->hasOne(Student::class);
+        return $this->morphTo();
     }
 
     // Méthodes de vérification des rôles

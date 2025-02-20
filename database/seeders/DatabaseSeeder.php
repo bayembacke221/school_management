@@ -14,8 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // Créer l'administrateur du système
         User::create([
             'first_name' => 'Admin',
             'last_name' => 'System',
@@ -24,6 +23,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'admin',
             'status' => 'active'
+        ]);
+
+
+        $this->call([
+            UserSeeder::class,
         ]);
     }
 }

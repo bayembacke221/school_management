@@ -13,15 +13,9 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('phone_number')->nullable();
-            $table->text('address')->nullable();
             $table->string('specialty');  // Matière principale enseignée
             $table->date('hire_date');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
