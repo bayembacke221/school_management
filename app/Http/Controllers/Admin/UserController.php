@@ -51,7 +51,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        Gate::authorize('view', User::class);
+        Gate::authorize('view', $user);
         return view('admin.users.show', compact('user'));
     }
 
