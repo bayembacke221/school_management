@@ -13,17 +13,11 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
             $table->string('registration_number')->unique();
             $table->date('birth_date');
             $table->enum('gender', ['M', 'F']);
-            $table->string('email')->unique();
-            $table->string('phone_number')->nullable();
-            $table->text('address')->nullable();
             $table->foreignId('classroom_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->enum('status', ['active', 'suspended', 'graduated'])->default('active');
             $table->timestamps();
         });
     }

@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Teacher extends Model
+class Parents extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'specialty',
-        'hire_date',
-        'user_id'
-    ];
+    protected $table = 'parents';
 
-    protected $casts = [
-        'hire_date' => 'date'
+    protected $fillable = [
+        'occupation',
+        'relationship_type', // père, mère, tuteur
+        'emergency_contact',
+        'user_id'
     ];
 
     // Relations
@@ -25,9 +24,9 @@ class Teacher extends Model
         return $this->morphOne(User::class, 'profile');
     }
 
-    public function classrooms()
+    public function students()
     {
-        return $this->belongsToMany(Classroom::class, 'classroom_teacher');
+        return $this->belongsToMany(Student::class, 'parent_student');
     }
 
     // Déléguer les attributs à l'utilisateur

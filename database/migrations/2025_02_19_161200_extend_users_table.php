@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->enum('role', ['admin', 'teacher', 'student', 'parent'])->default('student');
             $table->string('avatar')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('status', ['active', 'inactive', 'suspended', 'graduated'])->default('active');
         });
     }
 
