@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ClassController extends Controller
 {
@@ -14,9 +15,14 @@ class ClassController extends Controller
         return view('admin.classes.index', compact('classrooms'));
     }
 
+    protected function showFormView(Classroom $class = null)
+    {
+        return view('admin.classes.create', compact('class'));
+    }
+
     public function create()
     {
-        return view('admin.classes.create');
+        return $this->showFormView();
     }
 
     public function store(Request $request)
@@ -40,9 +46,9 @@ class ClassController extends Controller
         return view('admin.classes.show', compact('classroom'));
     }
 
-    public function edit(Classroom $classroom)
+    public function edit(Classroom $class)
     {
-        return view('admin.classes.edit', compact('classroom'));
+        return $this->showFormView($class);
     }
 
     public function update(Request $request, Classroom $classroom)
@@ -57,6 +63,8 @@ class ClassController extends Controller
         ]);
 
         $classroom->update($validatedData);
+
+        Log::info('Classe mise à jour', ['classroom' => $classroom->toArray()]);
 
         return redirect()->route('admin.classes.index')->with('success', 'Classe mise à jour avec succès.');
     }
