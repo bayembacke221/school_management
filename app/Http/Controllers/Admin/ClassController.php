@@ -41,9 +41,9 @@ class ClassController extends Controller
         return redirect()->route('admin.classes.index')->with('success', 'Classe créée avec succès.');
     }
 
-    public function show(Classroom $classroom)
+    public function show(Classroom $class)
     {
-        return view('admin.classes.show', compact('classroom'));
+        return view('admin.classes.show', compact('class'));
     }
 
     public function edit(Classroom $class)
