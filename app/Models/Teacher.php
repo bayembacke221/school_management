@@ -22,12 +22,22 @@ class Teacher extends Model
     // Relations
     public function user()
     {
-        return $this->morphOne(User::class, 'profile');
+        return $this->belongsTo(User::class);
+    }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class, 'subject_teacher');
     }
 
     public function classrooms()
     {
         return $this->belongsToMany(Classroom::class, 'classroom_teacher');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->user->full_name;
     }
 
     // Déléguer les attributs à l'utilisateur
