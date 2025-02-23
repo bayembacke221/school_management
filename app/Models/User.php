@@ -39,11 +39,7 @@ class User extends Authenticatable
         return "{$this->first_name} {$this->last_name}";
     }
 
-    // Relations polymorphiques
-    public function profile()
-    {
-        return $this->morphTo();
-    }
+
 
     // Méthodes de vérification des rôles
     public function isAdmin()

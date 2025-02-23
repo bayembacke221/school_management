@@ -24,7 +24,7 @@ class Student extends Model
     // Relations
     public function user()
     {
-        return $this->morphOne(User::class, 'profile');
+        return $this->belongsTo(User::class);
     }
 
     public function classroom()
