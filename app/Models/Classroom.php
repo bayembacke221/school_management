@@ -15,12 +15,12 @@ class Classroom extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'section',
-        'level',
-        'capacity',
-        'academic_year',
-        'status'
+        'name',        // Exemple: "Terminale S1"
+        'section',     // Exemple: "Scientifique"
+        'level',       // Exemple: 1, 2, 3 (année d'études)
+        'capacity',    // Capacité maximale d'étudiants
+        'academic_year', // Exemple: "2023-2024"
+        'status'       // active, inactive
     ];
 
     // Relations
@@ -32,5 +32,34 @@ class Classroom extends Model
     public function teachers()
     {
         return $this->belongsToMany(Teacher::class, 'classroom_teacher');
+    }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+    // Accesseurs
+    public function getCurrentStudentsCountAttribute()
+    {
+        return $this->students()
+            ->whereHas('user', function($query) {
+                $query->where('status', 'active');
+            })
+            ->count();
+    }
+
+    public function getStudentsCountAttribute()
+    {
+        return $this->students()
+            ->whereHas('user', function($query) {
+                $query->where('status', 'active');
+            })
+            ->count();
+    }
+
+    public function getAvailableSeatsAttribute()
+    {
+        return $this->capacity - $this->current_students_count;
     }
 }
