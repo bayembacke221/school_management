@@ -2,12 +2,7 @@
 
 use App\Http\Controllers\Dashboard\AdminDashboardController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\{
-    UserController,
-    ClassController,
-    SubjectController,
-    ScheduleController
-};
+use App\Http\Controllers\Admin\{RoomController, UserController, ClassController, SubjectController, ScheduleController};
 use App\Http\Controllers\Teacher\{
     CourseController as TeacherCourseController,
     GradeController as TeacherGradeController,
@@ -48,6 +43,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::resource('classes', ClassController::class);
         Route::resource('subjects', SubjectController::class);
         Route::resource('schedules', ScheduleController::class);
+        Route::resource('rooms', RoomController::class);
     });
 });
 
