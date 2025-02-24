@@ -62,4 +62,10 @@ class Classroom extends Model
     {
         return $this->capacity - $this->current_students_count;
     }
+
+    public static function active(){
+
+        return self::where('status', 'active');
+
+    }
 }
