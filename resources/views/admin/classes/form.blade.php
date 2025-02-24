@@ -24,7 +24,7 @@
                                 <input type="text"
                                        name="name"
                                        id="name"
-                                       value="{{ old('name', $class->name ?? '') }}"
+                                       value="{{ old('name', $classroom->name ?? '') }}"
                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                 @error('name')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -128,10 +128,10 @@
                                                name="teacher_ids[]"
                                                value="{{ $teacher->id }}"
                                                id="teacher_{{ $teacher->id }}"
-                                               {{ in_array($teacher->id, old('teacher_ids', $class->teachers->pluck('id')->toArray() ?? [])) ? 'checked' : '' }}
+                                               {{ in_array($teacher->id, old('teacher_ids', isset($schedule) ? $schedule->teachers->pluck('id')->toArray() : [])) ? 'checked' : '' }}
                                                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
                                         <label for="teacher_{{ $teacher->id }}" class="ml-2 block text-sm text-gray-900">
-                                            {{ $teacher->full_name }} ({{ $teacher->specialty }})
+                                            {{ $teacher->user->full_name }} ({{ $teacher->specialty }})
                                         </label>
                                     </div>
                                 @endforeach
