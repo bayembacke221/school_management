@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('number')->unique();
-            $table->string('name')->nullable();
-            $table->integer('capacity');
             $table->enum('type', ['classroom', 'lab', 'conference', 'other']);
+            $table->integer('capacity');
             $table->text('description')->nullable();
             $table->enum('status', ['available', 'maintenance', 'occupied'])->default('available');
+            $table->string('floor')->nullable();
+            $table->string('building')->nullable();
             $table->timestamps();
         });
     }
