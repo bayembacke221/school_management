@@ -51,7 +51,6 @@ class ClassController extends Controller
     public function create()
     {
         $teachers = Teacher::all();
-        Log::info('Teachers: ' . $teachers);
         return view('admin.classes.form', compact('teachers'));
     }
 
