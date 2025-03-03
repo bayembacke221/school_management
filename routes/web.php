@@ -2,7 +2,12 @@
 
 use App\Http\Controllers\Dashboard\AdminDashboardController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\{RoomController, UserController, ClassController, SubjectController, ScheduleController};
+use App\Http\Controllers\Admin\{RoomController,
+    SchoolManagementController,
+    UserController,
+    ClassController,
+    SubjectController,
+    ScheduleController};
 use App\Http\Controllers\Teacher\{
     CourseController as TeacherCourseController,
     GradeController as TeacherGradeController,
@@ -38,6 +43,10 @@ Route::post('logout', [AuthController::class, 'logout'])
 // Routes pour l'administrateur
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+    // Nouvelle route pour la vue de gestion d'établissement
+    Route::get('/admin/school-management', [SchoolManagementController::class, 'index'])->name('admin.school-management');
+
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('classes', ClassController::class);

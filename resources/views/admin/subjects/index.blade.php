@@ -6,9 +6,15 @@
                 <h2 class="text-2xl font-semibold text-gray-800">
                     Gestion des Matières
                 </h2>
-                <a href="{{ route('admin.subjects.create') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
-                    + Nouvelle Matière
-                </a>
+                <div class="flex space-x-3">
+                    <a href="{{ route('admin.subjects.create') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
+                        + Nouvelle Matière
+                    </a>
+                    <a href="{{ route('admin.school-management') }}"
+                       class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700">
+                        Retour
+                    </a>
+                </div>
             </div>
 
             <!-- Recherche -->

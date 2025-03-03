@@ -6,9 +6,15 @@
                 <h2 class="text-2xl font-semibold text-gray-800">
                     Gestion des Classes
                 </h2>
-                <a href="{{ route('admin.classes.create') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
-                    + Nouvelle Classe
-                </a>
+                <div class="flex space-x-3">
+                    <a href="{{ route('admin.classes.create') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
+                        + Nouvelle Classe
+                    </a>
+                    <a href="{{ route('admin.school-management') }}"
+                       class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700">
+                        Retour
+                    </a>
+                </div>
             </div>
 
             <!-- Filtres -->
