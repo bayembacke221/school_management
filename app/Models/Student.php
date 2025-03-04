@@ -31,7 +31,10 @@ class Student extends Model
     {
         return $this->belongsTo(Classroom::class);
     }
-
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
     // Déléguer les attributs à l'utilisateur
     public function __get($key)
     {

@@ -68,4 +68,9 @@ class Classroom extends Model
         return self::where('status', 'active');
 
     }
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

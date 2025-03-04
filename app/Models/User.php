@@ -39,7 +39,21 @@ class User extends Authenticatable
         return "{$this->first_name} {$this->last_name}";
     }
 
+    // Relations pour les profils spécifiques
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
 
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
+    public function parent()
+    {
+        return $this->hasOne(Parent::class);
+    }
 
     // Méthodes de vérification des rôles
     public function isAdmin()
