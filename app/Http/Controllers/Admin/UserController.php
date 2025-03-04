@@ -8,6 +8,7 @@ use App\Models\Classroom;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\User;
+use App\Models\Parents;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -216,7 +217,7 @@ class UserController extends Controller
                 $user->parent->update($parentData);
                 Log::info('Profil parent mis à jour', ['parent_id' => $user->parent->id]);
             } else {
-                Parent::create($parentData);
+                Parents::create($parentData);
                 Log::info('Nouveau profil parent créé pour l\'utilisateur', ['user_id' => $user->id]);
             }
         } catch (Exception $e) {
