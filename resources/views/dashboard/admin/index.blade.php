@@ -176,7 +176,7 @@
                     </div>
                     <div class="p-6">
                         <div class="space-y-4">
-                            <a href="#" class="group flex items-center p-4 bg-white border border-gray-200 rounded-xl hover:bg-indigo-50 hover:border-indigo-200 transition-all duration-200">
+                            <a href="{{route('admin.users.create')}}" class="group flex items-center p-4 bg-white border border-gray-200 rounded-xl hover:bg-indigo-50 hover:border-indigo-200 transition-all duration-200">
                                 <div class="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center group-hover:bg-indigo-200 transition-all">
                                     <svg class="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
@@ -188,7 +188,7 @@
                                 </div>
                             </a>
 
-                            <a href="#" class="group flex items-center p-4 bg-white border border-gray-200 rounded-xl hover:bg-green-50 hover:border-green-200 transition-all duration-200">
+                            <a href="{{route('admin.users.create')}}" class="group flex items-center p-4 bg-white border border-gray-200 rounded-xl hover:bg-green-50 hover:border-green-200 transition-all duration-200">
                                 <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center group-hover:bg-green-200 transition-all">
                                     <svg class="h-5 w-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
@@ -200,7 +200,7 @@
                                 </div>
                             </a>
 
-                            <a href="#" class="group flex items-center p-4 bg-white border border-gray-200 rounded-xl hover:bg-yellow-50 hover:border-yellow-200 transition-all duration-200">
+                            <a href="{{route('admin.users.create')}}" class="group flex items-center p-4 bg-white border border-gray-200 rounded-xl hover:bg-yellow-50 hover:border-yellow-200 transition-all duration-200">
                                 <div class="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center group-hover:bg-yellow-200 transition-all">
                                     <svg class="h-5 w-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
